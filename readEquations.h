@@ -1,3 +1,25 @@
+//#include <iostream>
+//#include <cstring>
+//#include <string>
+//#include <cmath>
+//#include <math.h>
+//using namespace std;
+
+//
+//void readEquation(string& equation)
+//{
+//    cout << "Please input an equation ( x for unknown quantity )" << endl;
+//    cin >> equation;
+//    string tmp = equation;
+//    for(int i = 0;i < tmp.length();i++)
+//    {
+//        while(tmp[i]!='+' && tmp[i]!='-' && tmp[i]!='*' && tmp[i]!='/')
+//        {
+//
+//        }
+//    }
+//
+//}
 #include <iostream>
 #include <string>
 #include <cstring>
@@ -47,20 +69,20 @@ void split(string e,double* n,char* f,int* fp)
             ++count;
             continue;
         }
-        if(e[i] == '(')
-        {
-            f[count] = '(';
-            fp[count] = i;
-            ++count;
-            continue;
-        }
-        if(e[i] == ')')
-        {
-            f[count] = ')';
-            fp[count] = i;
-            ++count;
-            continue;
-        }
+//        if(e[i] == '(')
+//        {
+//            f[count] = '(';
+//            fp[count] = i;
+//            ++count;
+//            continue;
+//        }
+//        if(e[i] == ')')
+//        {
+//            f[count] = ')';
+//            fp[count] = i;
+//            ++count;
+//            continue;
+//        }
         if(e[i] == 'x')
         {
             f[count] = 'x';
@@ -76,19 +98,31 @@ void split(string e,double* n,char* f,int* fp)
             continue;
         }
     }
-
+	int notxcount = 0;
         for (int i = 0;i < count;++i)
         {
+
             string s = e.substr((fp[i]+1),(fp[i+1]-fp[i]-1));
+            
             if (s.length()!=0)
-            n[i] = stod(s);
+                n[i+notxcount] = stod(s);
+            else
+                n[i+notxcount] = 1.0;
+			if (f[i + 1] != 'x'&&f[i] != 'x')
+			{
+				++notxcount;
+				n[i + notxcount] = 0.0;
+				
+			}
+			
         }
         //for test only
-        for (int i = 0;i < count;++i)
+        for (int i = 0;i < count+notxcount;++i)
         {
-            cout << n[i] << f[i+1];
+            cout << n[i];
         }
-	cout << endl;
+
+        cout << endl;
 }
 
 
