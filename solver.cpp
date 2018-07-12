@@ -15,7 +15,7 @@ char functions[100];
 int fPos[100] = {0};
 datum* d = new datum[50];
 #include "makeDataOrganized.h"
-
+#include "solve.h"
 int main()
 {
 //    for(int i = 0;i<50;++i)
@@ -24,5 +24,8 @@ int main()
     cin >> equation;
     split(equation,numbers,functions,fPos);
     makeDataOrganized(d);
+    solve(d);
+    return 0;
 
 }
+

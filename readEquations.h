@@ -117,12 +117,12 @@ void split(string e,double* n,char* f,int* fp)
 			
         }
         //for test only
-        for (int i = 0;i < count+notxcount;++i)
-        {
-            cout << n[i];
-        }
+//        for (int i = 0;i < count+notxcount;++i)
+//        {
+//            cout << n[i];
+//        }
 
-        cout << endl;
+//        cout << endl;
 }
 
 

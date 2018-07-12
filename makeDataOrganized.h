@@ -9,7 +9,7 @@ void makeDataOrganized(datum* data)
 		data[i].b = numbers[i * 2 + 1];
 	}
 	//just for test
-	for (int i = 0;i < 50;++i)
-		cout << data[i].a << " " << data[i].b << " ";
+//	for (int i = 0;i < 50;++i)
+//		cout << data[i].a << " " << data[i].b << " ";
 }
 #endif
