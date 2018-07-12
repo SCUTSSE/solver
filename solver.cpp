@@ -18,8 +18,8 @@ datum* d = new datum[50];
 #include "solve.h"
 int main()
 {
-//    for(int i = 0;i<50;++i)
-//        numbers[2*i] = 1;
+    for(int i=0;i<100;++i)
+    functions[i]='+';
     cout << "Please input an equation, a*x^n represented by axn" << endl;
     cin >> equation;
     split(equation,numbers,functions,fPos);
