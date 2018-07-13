@@ -12,6 +12,18 @@ int findequal(char* ft)
 	return -1;
 }
 
+int findDataEnd(double* a)
+{
+    int p=49;
+    for(int i=49;i>=0;--i)
+        if(a[i]!=0)
+        {
+            p=i;
+            return p;
+        }
+        return 0;
+}
+
 void solve(datum* d)
 {
 	char *ft= new char[50];
@@ -34,7 +46,7 @@ void solve(datum* d)
 		double s = -100;
 		while (s <= 100)
 		{
-			double out[50]={0};
+			double *out = new double[50]{0};
 			for (int i = 0;i < 50;++i)
 			{
 				out[i] = d[i].a*pow(s, d[i].b);
@@ -47,10 +59,12 @@ void solve(datum* d)
 					out[i] = 0;
 				}
 			}
-			for(int i = 0;i<10;++i)
-			{
-				cout << out[i] << " ";
-				}
+			int e = findDataEnd(out);
+//			cout << e << endl;
+//			for(int i = 0;i<10;++i)
+//			{
+//				cout << out[i] << " ";
+//				}
 			double sum = out[0];
 			for(int i = 0;i < equalPos;++i)
 			{
@@ -59,18 +73,18 @@ void solve(datum* d)
 				else if(ft[i]=='-')
 				sum = sum - out[i+1];
 			}
-			for(int i = equalPos;i < 50;++i)
+			for(int i = equalPos;i < e+1;++i)
 			{
 				if(ft[i]=='+'||ft[i]=='=')
 				{
 				sum = sum - out[i-1];
 				}
-				else if(ft[i]=='-')
-				{	
+				if(ft[i]=='-')
+				{
 				sum = sum + out[i-1];
 				}
 			}
-			
+
 			cout << sum << endl;
 			if(abs(sum)<=EPS)
 			cout << "x = " << s << endl;
@@ -79,6 +93,7 @@ void solve(datum* d)
 	}
 }
 
-#endif 
+#endif
+
 
 
