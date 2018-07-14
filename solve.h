@@ -1,6 +1,6 @@
 #ifndef SOLVE_H
 #define SOLVE_H
-#define EPS 0.0001
+#define EPS 0.00000001
 #include <cmath>
 int findequal(char* ft)
 {
@@ -66,6 +66,7 @@ void solve(datum* d)
 //				cout << out[i] << " ";
 //				}
 			double sum = out[0];
+			double sum2 = 0;
 			for(int i = 0;i < equalPos;++i)
 			{
 				if(ft[i]=='+')
@@ -73,22 +74,22 @@ void solve(datum* d)
 				else if(ft[i]=='-')
 				sum = sum - out[i+1];
 			}
-			for(int i = equalPos;i < e+1;++i)
+			for(int i = equalPos;i < e;++i)
 			{
-				if(ft[i]=='+'||ft[i]=='=')
+				if((ft[i]=='+')||(ft[i]=='='))
 				{
-				sum = sum - out[i-1];
+				sum2 = sum2 + out[i+1];
 				}
 				if(ft[i]=='-')
 				{
-				sum = sum + out[i-1];
+				sum2 = sum2 - out[i+1];
 				}
 			}
 
-			cout << sum << endl;
-			if(abs(sum)<=EPS)
+//			cout << sum-sum2 << endl;
+			if(abs(sum-sum2)<=EPS)
 			cout << "x = " << s << endl;
-			s+=0.0001;
+			s+=0.001;
 		}
 	}
 }
